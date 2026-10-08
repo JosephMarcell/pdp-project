@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Detail | 50ml</title>
+  <meta name="description" content="Luxury Skincare Online Retailer. Buy online at 50ml.">
+
+  <!-- Google Fonts: Inter & Jost / Plus Jakarta Sans for clean geometric Futura-like aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Top Announcement Bar (50ml style) -->
+  <aside class="top-announcement-bar">
+    <div class="announcement-track">
+      <span>Free Delivery from 150$*</span>
+      <span class="announcement-bullet">•</span>
+      <span>Pick Your Free Samples in the Shopping Cart!</span>
+      <span class="announcement-bullet">•</span>
+      <span>Official Online Retailer</span>
+    </div>
+  </aside>
+
+  <!-- Collapsed Sidebar Overlay & Drawer -->
+  <div class="sidebar-overlay" id="sidebar-overlay" aria-hidden="true"></div>
+  
+  <aside class="collapsed-sidebar" id="collapsed-sidebar" aria-label="Navigation Menu">
+    <div class="sidebar-header">
+      <span class="sidebar-title">Menu</span>
+      <button type="button" class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Sidebar Menu Elements (Setiap elemen pakai Lorem Ipsum) -->
+    <nav class="sidebar-nav">
+      <ul class="sidebar-menu-list">
+        <li><a href="#lorem-1" class="sidebar-link">Lorem Ipsum Dolor</a></li>
+        <li><a href="#lorem-2" class="sidebar-link">Consectetur Adipiscing</a></li>
+        <li><a href="#lorem-3" class="sidebar-link">Sed Do Eiusmod</a></li>
+        <li><a href="#lorem-4" class="sidebar-link">Tempor Incididunt</a></li>
+        <li><a href="#lorem-5" class="sidebar-link">Labore Et Dolore</a></li>
+        <li><a href="#lorem-6" class="sidebar-link">Magna Aliqua</a></li>
+        <li><a href="#lorem-7" class="sidebar-link">Ut Enim Ad Minim</a></li>
+        <li><a href="#lorem-8" class="sidebar-link">Veniam Quis Nostrud</a></li>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Cart Sidebar Overlay & Drawer Modal (Muncul saat Add to Cart atau klik logo Bag) -->
+  <div class="cart-overlay" id="cart-overlay" aria-hidden="true"></div>
+
+  <aside class="cart-sidebar" id="cart-sidebar" aria-label="Shopping Bag Summary" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="cart-sidebar-header">
+      <div class="cart-header-title-wrap">
+        <span class="cart-sidebar-title">Shopping Bag</span>
+        <span class="cart-items-count-tag" id="cart-sidebar-items-count">(0)</span>
+      </div>
+      <button type="button" class="cart-close-btn" id="cart-close-btn" aria-label="Close shopping bag">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Free Delivery Threshold Notice (50ml style: Free delivery from $150) -->
+    <div class="cart-threshold-bar" id="cart-threshold-bar">
+      <p class="threshold-text" id="threshold-text">Free delivery from $150. Add <strong id="threshold-remaining">$150.00</strong> more!</p>
+      <div class="threshold-progress-track">
+        <div class="threshold-progress-fill" id="threshold-progress-fill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Scrollable Body -->
+    <div class="cart-sidebar-body" id="cart-sidebar-body">
+      <!-- Empty State -->
+      <div class="cart-empty-view" id="cart-empty-view">
+        <svg class="cart-empty-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3">
+          <path d="M4 6h16l-1.5 13H5.5L4 6z"/>
+          <path d="M8 6V4a4 4 0 0 1 8 0v2"/>
+        </svg>
+        <p class="cart-empty-title">Your shopping bag is empty</p>
+        <p class="cart-empty-subtitle">Discover our exclusive luxury skincare collection.</p>
+        <button type="button" class="btn-start-shopping" id="btn-start-shopping">Start Shopping</button>
+      </div>
+
+      <!-- Items List -->
+      <ul class="cart-items-list" id="cart-items-list" aria-label="Items in cart">
+        <!-- Rendered dynamically via JavaScript -->
+      </ul>
+    </div>
+
+    <!-- Cart Sidebar Footer / Summary -->
+    <div class="cart-sidebar-footer" id="cart-sidebar-footer">
+      <div class="cart-subtotal-row">
+        <span class="subtotal-label">Subtotal</span>
+        <span class="subtotal-value" id="cart-subtotal-val">$0.00</span>
+      </div>
+      <p class="cart-tax-notice">Taxes, shipping and complimentary samples calculated at checkout.</p>
+      <button type="button" class="btn-checkout" id="btn-checkout">Proceed to Checkout</button>
+      <button type="button" class="btn-continue-link" id="btn-continue-link">Continue Shopping</button>
+    </div>
+  </aside>
+
+  <!-- Header / Navbar (50ml structure: Left Hamburger, Center "50ml", Right Search/Account/Bag) -->
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      
+      <!-- 1. LEFT: Collapsed Sidebar Hamburger Button -->
+      <div class="header-left">
+        <button type="button" class="menu-toggle-btn" id="menu-toggle-btn" aria-label="Open navigation menu">
+          <span class="hamburger-box">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </span>
+        </button>
+      </div>
+
+      <!-- 2. CENTER: Logo 50ml berwarna hitam -->
+      <div class="header-center">
+        <a href="#" class="brand-logo" aria-label="50ml home">
+          <span class="logo-50ml">50ml</span>
+        </a>
+      </div>
+
+      <!-- 3. RIGHT: Search, Account, Bag Icons -->
+      <div class="header-right">
+        <!-- Logo Search -->
+        <button type="button" class="header-icon-btn" id="btn-search" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8.5" cy="8.5" r="6" />
+            <line x1="13" y1="13" x2="18" y2="18" />
+          </svg>
+        </button>
+
+        <!-- Logo Akun -->
+        <a href="#account" class="header-icon-btn" id="btn-account" aria-label="My Account">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 17v-1.5a3.5 3.5 0 0 0-3.5-3.5h-5A3.5 3.5 0 0 0 4 15.5V17" />
+            <circle cx="10" cy="6" r="3.5" />
+          </svg>
+        </a>
+
+        <!-- Logo Bag / Keranjang (membuka sidebar modal keranjang) -->
+        <button type="button" class="header-icon-btn cart-btn-wrapper" id="btn-cart" aria-label="Shopping Bag">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 6h12l1 12H3L4 6z" />
+            <path d="M7 6V4a3 3 0 0 1 6 0v2" />
+          </svg>
+          <span class="cart-count-badge" id="cart-count-badge">0</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Breadcrumb Navigation -->
+  <nav class="breadcrumb-bar" aria-label="Breadcrumb">
+    <div class="breadcrumb-inner">
+      <a href="#">Home</a>
+      <span class="bc-sep">/</span>
+      <a href="#">Skin Care</a>
+      <span class="bc-sep">/</span>
+      <a href="#">Anti Age</a>
+      <span class="bc-sep">/</span>
+      <span class="bc-current" id="bc-current"></span>
+    </div>
+  </nav>
+
+  <!-- Main Product Detail Page (PDP) -->
+  <main class="product-page-main">
+    <div class="product-layout-grid">
+
+      <!-- LEFT COLUMN: Product Gallery -->
+      <section class="product-media-column" aria-label="Product Media Gallery">
+        <div class="main-image-wrapper">
+          <img 
+            id="main-product-img" 
+            src="" 
+            alt="" 
+            width="540" 
+            height="540"
+            style="background:#f4f4f4; object-fit:contain;"
+          >
+        </div>
+
+        <!-- Thumbnails Gallery (Di-render Dinamis oleh JS dari Backend) -->
+        <div class="thumbs-list" id="thumbs-list" role="tablist" aria-label="Product Thumbnails">
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: Product Info & Purchase Controls -->
+      <section class="product-info-column" aria-label="Product Information">
+        
+        <!-- Brand Name (Di-render Dinamis dari Backend Features) -->
+        <a class="brand-title" id="brand-title" href="#" title=""></a>
+
+        <!-- Product Name (Di-render Dinamis dari Backend Name) -->
+        <h1 class="product-name" id="product-name"></h1>
+
+        <!-- Deskripsi singkat produk DI BAWAH JUDUL (Di-render Dinamis) -->
+        <p class="product-subtitle" id="product-subtitle"></p>
+
+        <!-- Review & Price Container -->
+        <div class="review-price-bar">
+          
+          <!-- Price Box (Di-render Dinamis dari Backend Price / Variation) -->
+          <div class="price-box">
+            <span class="price-label">As low as</span>
+            <div class="price-display">
+              <span class="price-amount" id="product-price">-</span>
+            </div>
+          </div>
+
+          <!-- Bintang Ulasan: Form yg bisa ditekan hingga beberapa bintang (1-5 stars) -->
+          <div class="rating-form-wrapper" aria-label="Rating Produk">
+            <form class="star-rating-form" id="star-rating-form" onsubmit="return false;">
+              <span class="sr-only">Beri rating produk ini</span>
+              <div class="stars-interactive-group" id="stars-interactive-group" role="radiogroup" aria-label="Rating bintang dari 1 sampai 5">
+                <button type="button" class="star-btn active" data-rating="1" role="radio" aria-checked="true" aria-label="1 bintang" disabled style="opacity: 0.5; cursor: not-allowed;">
+                  <svg class="star-svg" viewBox="0 0 18 17">
+                    <path d="M7.0487 3.53383C7.69078 1.93314 8.01181 1.1328 8.53339 1.02187C8.67053 0.992708 8.81228 0.992708 8.94943 1.02187C9.471 1.1328 9.79204 1.93314 10.4341 3.53383C10.7992 4.44411 10.9818 4.89925 11.3234 5.20882C11.4192 5.29565 11.5233 5.37298 11.634 5.43973C12.0288 5.6777 12.5217 5.72185 13.5075 5.81013C15.1763 5.95958 16.0107 6.03431 16.2655 6.51005C16.3182 6.60858 16.3541 6.71526 16.3716 6.82566C16.4561 7.35868 15.8427 7.91674 14.6159 9.03286L14.2752 9.3428C13.7017 9.86461 13.4149 10.1255 13.249 10.4511C13.1495 10.6464 13.0828 10.8568 13.0516 11.0737C12.9994 11.4354 13.0834 11.8139 13.2514 12.5709L13.3114 12.8414C13.6126 14.1989 13.7632 14.8777 13.5752 15.2113C13.4063 15.511 13.0953 15.7029 12.7517 15.7193C12.3692 15.7375 11.8302 15.2983 10.7522 14.4199C10.042 13.8412 9.68688 13.5519 9.29267 13.4388C8.93242 13.3355 8.5504 13.3355 8.19015 13.4388C7.79594 13.5519 7.44083 13.8412 6.73062 14.4199C5.65265 15.2983 5.11366 15.7375 4.73114 15.7193C4.38754 15.7029 4.07649 15.511 3.90763 15.2113C3.71964 14.8777 3.87023 14.1989 4.17143 12.8414L4.23144 12.5709C4.39939 11.8139 4.48337 11.4354 4.43125 11.0737C4.39999 10.8568 4.33328 10.6464 4.23378 10.4511C4.0679 10.1255 3.78113 9.86461 3.20759 9.3428L2.86691 9.03286C1.64012 7.91674 1.02673 7.35868 1.1112 6.82566C1.1287 6.71526 1.16458 6.60858 1.21735 6.51005C1.47215 6.03431 2.30653 5.95958 3.97529 5.81013C4.96108 5.72185 5.45397 5.6777 5.84881 5.43973C5.95955 5.37298 6.06357 5.29565 6.15939 5.20882C6.501 4.89925 6.68357 4.44411 7.0487 3.53383Z" stroke="#904745" stroke-width="1.8"/>
+                  </svg>
+                </button>
+                <button type="button" class="star-btn active" data-rating="2" role="radio" aria-checked="true" aria-label="2 bintang" disabled style="opacity: 0.5; cursor: not-allowed;">
+                  <svg class="star-svg" viewBox="0 0 18 17">
+                    <path d="M7.0487 3.53383C7.69078 1.93314 8.01181 1.1328 8.53339 1.02187C8.67053 0.992708 8.81228 0.992708 8.94943 1.02187C9.471 1.1328 9.79204 1.93314 10.4341 3.53383C10.7992 4.44411 10.9818 4.89925 11.3234 5.20882C11.4192 5.29565 11.5233 5.37298 11.634 5.43973C12.0288 5.6777 12.5217 5.72185 13.5075 5.81013C15.1763 5.95958 16.0107 6.03431 16.2655 6.51005C16.3182 6.60858 16.3541 6.71526 16.3716 6.82566C16.4561 7.35868 15.8427 7.91674 14.6159 9.03286L14.2752 9.3428C13.7017 9.86461 13.4149 10.1255 13.249 10.4511C13.1495 10.6464 13.0828 10.8568 13.0516 11.0737C12.9994 11.4354 13.0834 11.8139 13.2514 12.5709L13.3114 12.8414C13.6126 14.1989 13.7632 14.8777 13.5752 15.2113C13.4063 15.511 13.0953 15.7029 12.7517 15.7193C12.3692 15.7375 11.8302 15.2983 10.7522 14.4199C10.042 13.8412 9.68688 13.5519 9.29267 13.4388C8.93242 13.3355 8.5504 13.3355 8.19015 13.4388C7.79594 13.5519 7.44083 13.8412 6.73062 14.4199C5.65265 15.2983 5.11366 15.7375 4.73114 15.7193C4.38754 15.7029 4.07649 15.511 3.90763 15.2113C3.71964 14.8777 3.87023 14.1989 4.17143 12.8414L4.23144 12.5709C4.39939 11.8139 4.48337 11.4354 4.43125 11.0737C4.39999 10.8568 4.33328 10.6464 4.23378 10.4511C4.0679 10.1255 3.78113 9.86461 3.20759 9.3428L2.86691 9.03286C1.64012 7.91674 1.02673 7.35868 1.1112 6.82566C1.1287 6.71526 1.16458 6.60858 1.21735 6.51005C1.47215 6.03431 2.30653 5.95958 3.97529 5.81013C4.96108 5.72185 5.45397 5.6777 5.84881 5.43973C5.95955 5.37298 6.06357 5.29565 6.15939 5.20882C6.501 4.89925 6.68357 4.44411 7.0487 3.53383Z" stroke="#904745" stroke-width="1.8"/>
+                  </svg>
+                </button>
+                <button type="button" class="star-btn active" data-rating="3" role="radio" aria-checked="true" aria-label="3 bintang" disabled style="opacity: 0.5; cursor: not-allowed;">
+                  <svg class="star-svg" viewBox="0 0 18 17">
+                    <path d="M7.0487 3.53383C7.69078 1.93314 8.01181 1.1328 8.53339 1.02187C8.67053 0.992708 8.81228 0.992708 8.94943 1.02187C9.471 1.1328 9.79204 1.93314 10.4341 3.53383C10.7992 4.44411 10.9818 4.89925 11.3234 5.20882C11.4192 5.29565 11.5233 5.37298 11.634 5.43973C12.0288 5.6777 12.5217 5.72185 13.5075 5.81013C15.1763 5.95958 16.0107 6.03431 16.2655 6.51005C16.3182 6.60858 16.3541 6.71526 16.3716 6.82566C16.4561 7.35868 15.8427 7.91674 14.6159 9.03286L14.2752 9.3428C13.7017 9.86461 13.4149 10.1255 13.249 10.4511C13.1495 10.6464 13.0828 10.8568 13.0516 11.0737C12.9994 11.4354 13.0834 11.8139 13.2514 12.5709L13.3114 12.8414C13.6126 14.1989 13.7632 14.8777 13.5752 15.2113C13.4063 15.511 13.0953 15.7029 12.7517 15.7193C12.3692 15.7375 11.8302 15.2983 10.7522 14.4199C10.042 13.8412 9.68688 13.5519 9.29267 13.4388C8.93242 13.3355 8.5504 13.3355 8.19015 13.4388C7.79594 13.5519 7.44083 13.8412 6.73062 14.4199C5.65265 15.2983 5.11366 15.7375 4.73114 15.7193C4.38754 15.7029 4.07649 15.511 3.90763 15.2113C3.71964 14.8777 3.87023 14.1989 4.17143 12.8414L4.23144 12.5709C4.39939 11.8139 4.48337 11.4354 4.43125 11.0737C4.39999 10.8568 4.33328 10.6464 4.23378 10.4511C4.0679 10.1255 3.78113 9.86461 3.20759 9.3428L2.86691 9.03286C1.64012 7.91674 1.02673 7.35868 1.1112 6.82566C1.1287 6.71526 1.16458 6.60858 1.21735 6.51005C1.47215 6.03431 2.30653 5.95958 3.97529 5.81013C4.96108 5.72185 5.45397 5.6777 5.84881 5.43973C5.95955 5.37298 6.06357 5.29565 6.15939 5.20882C6.501 4.89925 6.68357 4.44411 7.0487 3.53383Z" stroke="#904745" stroke-width="1.8"/>
+                  </svg>
+                </button>
+                <button type="button" class="star-btn active" data-rating="4" role="radio" aria-checked="true" aria-label="4 bintang" disabled style="opacity: 0.5; cursor: not-allowed;">
+                  <svg class="star-svg" viewBox="0 0 18 17">
+                    <path d="M7.0487 3.53383C7.69078 1.93314 8.01181 1.1328 8.53339 1.02187C8.67053 0.992708 8.81228 0.992708 8.94943 1.02187C9.471 1.1328 9.79204 1.93314 10.4341 3.53383C10.7992 4.44411 10.9818 4.89925 11.3234 5.20882C11.4192 5.29565 11.5233 5.37298 11.634 5.43973C12.0288 5.6777 12.5217 5.72185 13.5075 5.81013C15.1763 5.95958 16.0107 6.03431 16.2655 6.51005C16.3182 6.60858 16.3541 6.71526 16.3716 6.82566C16.4561 7.35868 15.8427 7.91674 14.6159 9.03286L14.2752 9.3428C13.7017 9.86461 13.4149 10.1255 13.249 10.4511C13.1495 10.6464 13.0828 10.8568 13.0516 11.0737C12.9994 11.4354 13.0834 11.8139 13.2514 12.5709L13.3114 12.8414C13.6126 14.1989 13.7632 14.8777 13.5752 15.2113C13.4063 15.511 13.0953 15.7029 12.7517 15.7193C12.3692 15.7375 11.8302 15.2983 10.7522 14.4199C10.042 13.8412 9.68688 13.5519 9.29267 13.4388C8.93242 13.3355 8.5504 13.3355 8.19015 13.4388C7.79594 13.5519 7.44083 13.8412 6.73062 14.4199C5.65265 15.2983 5.11366 15.7375 4.73114 15.7193C4.38754 15.7029 4.07649 15.511 3.90763 15.2113C3.71964 14.8777 3.87023 14.1989 4.17143 12.8414L4.23144 12.5709C4.39939 11.8139 4.48337 11.4354 4.43125 11.0737C4.39999 10.8568 4.33328 10.6464 4.23378 10.4511C4.0679 10.1255 3.78113 9.86461 3.20759 9.3428L2.86691 9.03286C1.64012 7.91674 1.02673 7.35868 1.1112 6.82566C1.1287 6.71526 1.16458 6.60858 1.21735 6.51005C1.47215 6.03431 2.30653 5.95958 3.97529 5.81013C4.96108 5.72185 5.45397 5.6777 5.84881 5.43973C5.95955 5.37298 6.06357 5.29565 6.15939 5.20882C6.501 4.89925 6.68357 4.44411 7.0487 3.53383Z" stroke="#904745" stroke-width="1.8"/>
+                  </svg>
+                </button>
+                <button type="button" class="star-btn active" data-rating="5" role="radio" aria-checked="true" aria-label="5 bintang" disabled style="opacity: 0.5; cursor: not-allowed;">
+                  <svg class="star-svg" viewBox="0 0 18 17">
+                    <path d="M7.0487 3.53383C7.69078 1.93314 8.01181 1.1328 8.53339 1.02187C8.67053 0.992708 8.81228 0.992708 8.94943 1.02187C9.471 1.1328 9.79204 1.93314 10.4341 3.53383C10.7992 4.44411 10.9818 4.89925 11.3234 5.20882C11.4192 5.29565 11.5233 5.37298 11.634 5.43973C12.0288 5.6777 12.5217 5.72185 13.5075 5.81013C15.1763 5.95958 16.0107 6.03431 16.2655 6.51005C16.3182 6.60858 16.3541 6.71526 16.3716 6.82566C16.4561 7.35868 15.8427 7.91674 14.6159 9.03286L14.2752 9.3428C13.7017 9.86461 13.4149 10.1255 13.249 10.4511C13.1495 10.6464 13.0828 10.8568 13.0516 11.0737C12.9994 11.4354 13.0834 11.8139 13.2514 12.5709L13.3114 12.8414C13.6126 14.1989 13.7632 14.8777 13.5752 15.2113C13.4063 15.511 13.0953 15.7029 12.7517 15.7193C12.3692 15.7375 11.8302 15.2983 10.7522 14.4199C10.042 13.8412 9.68688 13.5519 9.29267 13.4388C8.93242 13.3355 8.5504 13.3355 8.19015 13.4388C7.79594 13.5519 7.44083 13.8412 6.73062 14.4199C5.65265 15.2983 5.11366 15.7375 4.73114 15.7193C4.38754 15.7029 4.07649 15.511 3.90763 15.2113C3.71964 14.8777 3.87023 14.1989 4.17143 12.8414L4.23144 12.5709C4.39939 11.8139 4.48337 11.4354 4.43125 11.0737C4.39999 10.8568 4.33328 10.6464 4.23378 10.4511C4.0679 10.1255 3.78113 9.86461 3.20759 9.3428L2.86691 9.03286C1.64012 7.91674 1.02673 7.35868 1.1112 6.82566C1.1287 6.71526 1.16458 6.60858 1.21735 6.51005C1.47215 6.03431 2.30653 5.95958 3.97529 5.81013C4.96108 5.72185 5.45397 5.6777 5.84881 5.43973C5.95955 5.37298 6.06357 5.29565 6.15939 5.20882C6.501 4.89925 6.68357 4.44411 7.0487 3.53383Z" stroke="#904745" stroke-width="1.8"/>
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- Variation Options: Capacity (Di-render Dinamis dari Backend Variation) -->
+        <div class="swatch-option-container">
+          <label class="swatch-label">
+            <span>Capacity: </span>
+            <span class="selected-swatch-val" id="selected-size-label">-</span>
+          </label>
+          
+          <div class="swatches-buttons-row" id="swatches-buttons-row" role="radiogroup" aria-label="Capacity">
+          </div>
+        </div>
+
+        <!-- Purchase Actions Row: Quantity + Add to Cart + Love Wishlist (NO SUBTOTAL/TOTAL) -->
+        <div class="add-to-cart-wrapper">
+          
+          <!-- Quantity Capsule Counter -->
+          <div class="qty-capsule">
+            <button type="button" class="qty-btn" id="btn-minus" aria-label="Decrease quantity" disabled>−</button>
+            <input type="text" class="qty-field" id="quantity-input" value="1" readonly aria-label="Quantity">
+            <button type="button" class="qty-btn" id="btn-plus" aria-label="Increase quantity">+</button>
+          </div>
+
+          <!-- Add to Cart Button (Dimatikan secara default hingga ada respon dari backend) -->
+          <button type="button" class="btn-primary-cart" id="btn-add-to-cart" disabled style="opacity: 0.6; cursor: not-allowed;">
+            <span id="btn-cart-text">Add to Cart</span>
+          </button>
+
+          <!-- Tombol Love untuk Wishlist -->
+          <button type="button" class="btn-love-wishlist" id="btn-wishlist" aria-label="Add to Wishlist" title="Add to Wish List" disabled style="opacity: 0.5; cursor: not-allowed;">
+            <svg class="heart-svg" width="36" height="32" viewBox="0 0 38 34" fill="currentColor">
+              <path d="M4.53078 18.6574L18.3156 31.6068C18.6401 31.9116 18.8023 32.0639 19.0003 32.0639C19.1983 32.0639 19.3606 31.9116 19.685 31.6068L33.4699 18.6574C34.0747 18.0891 34.3772 17.805 34.6187 17.5389C37.3734 14.5026 37.728 9.98829 35.4812 6.5591C35.2842 6.25847 35.0299 5.93062 34.5211 5.27493L33.9282 4.5107L33.9281 4.51058C33.6943 4.20924 33.5774 4.05855 33.4899 3.95345C29.833 -0.441192 22.8801 0.307542 20.2427 5.38001C20.1796 5.50134 20.0974 5.67349 19.9331 6.01779L19.9331 6.01788C19.9075 6.07151 19.8947 6.09833 19.8859 6.11505C19.5114 6.82904 18.4893 6.82904 18.1148 6.11505C18.106 6.09832 18.0932 6.07148 18.0675 6.01779C17.9032 5.6777 17.8211 5.50134 17.758 5.38001C15.1205 0.307542 8.16765 -0.441192 4.51071 3.95345C4.42325 4.05856 4.30633 4.20926 4.0725 4.51064L4.07246 4.51069L3.47952 5.27492L3.47951 5.27494C2.97078 5.93063 2.71642 6.25847 2.51945 6.5591C0.272646 9.98829 0.627269 14.5026 3.38198 17.5389C3.62346 17.805 3.92589 18.0891 4.53073 18.6573L4.53078 18.6574Z" stroke-width="2"/>
+            </svg>
+          </button>
+
+        </div>
+
+        <!-- 3 POIN DROPDOWN ACCORDION (Description, More information, Features) -->
+        <section class="pdp-accordions-container" aria-label="Product Accordions">
+          
+          <!-- Dropdown 1: Description -->
+          <div class="pdp-accordion-item">
+            <button type="button" class="accordion-header active" id="acc-header-desc" aria-expanded="true" aria-controls="acc-panel-desc">
+              <span class="acc-title">Description</span>
+              <span class="acc-toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-content open" id="acc-panel-desc" role="region" aria-labelledby="acc-header-desc">
+              <div class="acc-inner-body" id="desc-inner-body">
+                <!-- Di-render Dinamis dari Backend Description -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Dropdown 2: More information -->
+          <div class="pdp-accordion-item">
+            <button type="button" class="accordion-header" id="acc-header-info" aria-expanded="false" aria-controls="acc-panel-info">
+              <span class="acc-title">More information</span>
+              <span class="acc-toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-content" id="acc-panel-info" role="region" aria-labelledby="acc-header-info">
+              <div class="acc-inner-body" id="info-inner-body">
+                <!-- Di-render Dinamis dari Backend 'More Information' -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Dropdown 3: Features (Tabel) -->
+          <div class="pdp-accordion-item">
+            <button type="button" class="accordion-header" id="acc-header-feat" aria-expanded="false" aria-controls="acc-panel-feat">
+              <span class="acc-title">Features</span>
+              <span class="acc-toggle-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="accordion-content" id="acc-panel-feat" role="region" aria-labelledby="acc-header-feat">
+              <div class="acc-inner-body">
+                <div class="features-table-wrap">
+                  <table class="features-table">
+                    <tbody id="features-tbody">
+                      <!-- Di-render Dinamis dari Backend Features -->
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- 3 Feature Icons Row (Free shipping, Samples, Installments) as in 50ml -->
+        <div class="trust-icons-strip">
+          <div class="trust-icon-cell">
+            <svg width="32" height="32" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M29.9 7.7L14.7 12.7c-2.3.8-4 1.3-5.1 1.9-1.2.6-1.4 1-1.4 1.2s.2.6 1.4 1.2c1.1.6 2.8 1.1 5.1 1.9l1 .3c.8.3 1.4.5 1.9 1s.7 1.1 1 1.9l.3 1c.8 2.3 1.3 4 1.9 5.1.6 1.2 1 1.4 1.2 1.4s.6-.2 1.2-1.4c.6-1.1 1.1-2.8 1.9-5.1l4.4-13.3c.3-.9.5-1.4.6-1.8.1-.4 0-.5-.1-.5s-.4-.1-.8 0z" />
+            </svg>
+            <span>Free shipping from 150$</span>
+          </div>
+          <div class="trust-icon-cell">
+            <svg width="28" height="28" viewBox="0 0 30 30" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M10 1.4h3V5h-3zM8.5 6.4h6v2.9h-6zM14.8 10.7C18.8 12.1 21.4 15.8 21.4 20c0 3.5-1.8 6.7-4.8 8.5H6.2C3.2 26.7 1.4 23.5 1.4 20c0-4.2 2.6-7.9 6.6-9.3h6.8z" />
+            </svg>
+            <span>Free sample upon request</span>
+          </div>
+          <div class="trust-icon-cell">
+            <svg width="32" height="32" viewBox="0 0 38 38" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="4.75" y="9.5" width="28.5" height="20.5" rx="2"/>
+              <line x1="6.3" y1="17.4" x2="33.2" y2="17.4"/>
+            </svg>
+            <span>Buy now, pay later</span>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Minimalist Toast Notification -->
+  <div class="site-toast" id="site-toast" role="status" aria-live="polite">
+    <div class="toast-inner">
+      <span class="toast-check" id="toast-check">✓</span>
+      <span class="toast-msg" id="toast-msg">Item added to your shopping cart.</span>
+    </div>
+  </div>
+
+  <!-- Footer (50ml style) -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-center-brand">
+        <span class="footer-50ml">50ml</span>
+        <p class="footer-tagline">Niche Perfumery &amp; Luxury Skincare Online Retailer</p>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 50ml. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portal Proyek - Product Detail Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Jost:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #904745;
+      --primary-hover: #733432;
+      --bg: #f9f9f9;
+      --card-bg: #ffffff;
+      --text-main: #1f1f1f;
+      --text-muted: #666666;
+      --border: #e6e6e6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      padding: 40px 20px;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    h1 {
+      font-family: 'Jost', sans-serif;
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 40px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    }
+    .badge {
+      display: inline-block;
+      align-self: flex-start;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 16px;
+    }
+    .badge-page1 { background: #eef2ff; color: #4338ca; }
+    .badge-page2 { background: #fdf2f2; color: var(--primary); }
+    h2 {
+      font-family: 'Jost', sans-serif;
+      font-size: 1.45rem;
+      margin-bottom: 12px;
+    }
+    p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+    .feature-list {
+      list-style: none;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
+    }
+    .feature-list li {
+      padding: 5px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .feature-list li::before {
+      content: "✓";
+      color: #10b981;
+      font-weight: bold;
+    }
+    .btn {
+      display: inline-block;
+      text-align: center;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+    .btn:hover {
+      background: var(--primary-hover);
+    }
+    .btn-secondary {
+      background: #f3f4f6;
+      color: #374151;
+      margin-top: 8px;
+    }
+    .btn-secondary:hover {
+      background: #e5e7eb;
+    }
+    .info-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-top: 24px;
+    }
+    .info-box h3 {
+      color: var(--primary);
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+    }
+    pre {
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 14px 18px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 0.88rem;
+      margin: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Portal Product Detail Page (PDP)</h1>
+      <p class="subtitle">Eksplorasi Halaman Produk: Hardcoded Frontend vs Fullstack Terintegrasi PostgreSQL</p>
+    </header>
+
+    <div class="grid">
+      <!-- CARD PAGE 1 -->
+      <div class="card">
+        <span class="badge badge-page1">Page 1 • Static</span>
+        <h2>Product Detail Page (Hardcoded)</h2>
+        <p>Halaman detail produk (*Innoxa Unica AJ*) dengan data statis bawaan HTML & CSS, galeri foto, pemilihan variasi, keranjang belanja lokal, dan bintang ulasan.</p>
+        <ul class="feature-list">
+          <li>Struktur tampilan persis ritel mewah 50ml</li>
+          <li>Katalog data murni hardcoded (tanpa backend)</li>
+          <li>Interactive star rating (1–5 bintang)</li>
+          <li>Minicart drawer & threshold gratis ongkir $150</li>
+          <li>Collapsed sidebar navigation (Lorem Ipsum)</li>
+        </ul>
+        <a class="btn" href="./page-1/index.html">Buka Page 1 (Hardcoded) →</a>
+      </div>
+
+      <!-- CARD PAGE 2 -->
+      <div class="card">
+        <span class="badge badge-page2">Page 2 • Fullstack</span>
+        <h2>Product Detail Page (PostgreSQL API)</h2>
+        <p>Halaman frontend dinamis yang terintegrasi langsung dengan server Express.js dan database <strong>PostgreSQL</strong>. Struktur data produk tersimpan terpusat dan persisten.</p>
+        <ul class="feature-list">
+          <li>Database PostgreSQL (<code>product_api</code> &rarr; <code>products</code>)</li>
+          <li>Dynamic fetch <code>GET /api/products/1</code></li>
+          <li>Auto-swatch varian ukuran 50 ml ($94.30) & 100 ml ($135.70)</li>
+          <li>Injeksi Description, More Info, & tabel Features 6 baris</li>
+          <li>State protection: tombol terkunci saat backend offline</li>
+          <li>Full REST API CRUD (GET, POST, PUT, DELETE)</li>
+        </ul>
+        <a class="btn" href="./page-2/frontend/index.html">Buka Page 2 Frontend →</a>
+        <a class="btn btn-secondary" href="http://localhost:3000/api/status" target="_blank">Cek REST API Status (Port 3000) ↗</a>
+      </div>
+    </div>
+
+    <!-- PETUNJUK MENJALANKAN -->
+    <div class="info-box">
+      <h3>Cara Menjalankan Backend Page 2 (PostgreSQL)</h3>
+      <p>Pastikan container PostgreSQL Docker aktif, lalu jalankan backend:</p>
+      <pre><code>cd J:\dibimbing\pdp-project\page-2\backend
+npm start
+# Server berjalan di http://localhost:3000</code></pre>
+      <p>Data awal (Innoxa Unica AJ & Innoxa Radiance Serum) otomatis di-seed ke PostgreSQL saat server pertama kali dijalankan!</p>
+    </div>
+  </div>
+</body>
+</html>
